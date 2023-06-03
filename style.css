@@ -44,6 +44,16 @@ ul li {
     float: left;
 }
 
+ul li p{
+    color:#fff;
+    display:block;
+    height: 50px;
+    padding: 0 30px;
+    text-decoration: none;
+    line-height: 50px;
+}
+
+
 ul li a{
     color:#fff;
     display:block;
@@ -58,6 +68,15 @@ ul li a:hover{
     background: #d34d43;
     transition: background 1s;
 }
+
+.userimg{
+    border-radius: 100%;
+    margin: 5px;
+    height: 40px;
+    float: left;
+    padding-right: 5% ;
+}
+
 
 .logo{
     margin-top: 10px;
@@ -126,7 +145,7 @@ main{
 
 body{
     max-width: 1100px;
-    background-color: aliceblue;
+    background-color: #AEC09A;
 }
 *{
     font-family: Arial;

@@ -1,5 +1,6 @@
 <?php
 require "dbconnect.php";
+session_start();
 ?>
 <!doctype html>
 <html lang="en">
@@ -19,20 +20,15 @@ require "dbconnect.php";
             font-family: Arial;
             margin: 0 auto;
         }
-        .user{
-
+        .thread{
             background-color: palegreen;
             margin: 20px;
             padding: 10px;
             border-radius: 10px;
 
-
         }
-        .username{
+        .threadname{
             vertical-align: top;
-            width: 20%;
-            max-width: 250px;
-            display: inline-block;
         }
         .age{
             vertical-align: top;
@@ -44,10 +40,8 @@ require "dbconnect.php";
             font-size: large;
             margin-right: 15px;
         }
-        .birthday{
+        .description{
             vertical-align: top;
-            width: 56%;
-            display: inline-block;
         }
         .image{
             width: 10%;
@@ -65,39 +59,28 @@ require "dbconnect.php";
     </style>
 </head>
 <body>
-    <header>
-        <link href="style.css" rel="stylesheet" >
-        <nav>
-            <a href="index.php"><img class="logo" src="Images/Logo.png"></a>
-            <a href="https://vk.com/gabdrramil"><img class="sn" src="Images/vklogo.png"></a>
-            <ul>
-                <li><a href="userList.php">Список пользователей</a></li>
-                <li><a href="registration.php">Регистрация</a></li>
-                <li><a href="login.php">Вход</a></li>
-            </ul>
-        </nav>
-    </header>
 
     <?php
-    $result = $conn->query("SELECT * FROM users");
+    include "header.php";
+    ?>
+
+    <a href="test.php">123</a>
+
+    <?php
+    $result = $conn->query("SELECT * FROM threads");
 
     while ($row = $result->fetch()){
 ?>
-    <div class="user">
-        <img class="image" src="images\image.jpg" />
-        <div class="username">
-            <?= $row['username']?>
-        </div>
-        <div class="birthday">
-            <?= $row['birthday']?>
-        </div>
-        <div class="age">
-            <?= $row['age']?>
-        </div>
-        <button class="del-button" value="удалить">
-            Удалить
-        </button>
-    </div>
+        <a href="/thread.php?threadid=<?=$row['threadid']?>">
+            <div class="thread">
+                <h3 class="threadname">
+                     <?= $row['name']?>
+                </h3>
+                <div class="description">
+                    <?= $row['description']?>
+                </div>
+            </div>
+        </a>
 
     <?php
          }
